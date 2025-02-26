@@ -1,0 +1,897 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>Programming - Zephyr/nRF Connect SDK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#general-driver-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Zephyr/nRF Connect SDK Documentation" class="md-header__button md-logo" aria-label="Zephyr/nRF Connect SDK Documentation" data-md-component="logo">
+      
+  <img src="../assets/zephyr.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Zephyr/nRF Connect SDK Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Programming
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Zephyr/nRF Connect SDK Documentation" class="md-nav__button md-logo" aria-label="Zephyr/nRF Connect SDK Documentation" data-md-component="logo">
+      
+  <img src="../assets/zephyr.jpg" alt="logo">
+
+    </a>
+    Zephyr/nRF Connect SDK Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Programming
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Programming
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-driver-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Driver Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Driver Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Tree Overlay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kconfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-declaration-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpios" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIOs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIOs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-overlay_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Tree Overlay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kconfig_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kconfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-space_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-declaration-space_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-code_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ble" class="md-nav__link">
+    <span class="md-ellipsis">
+      BLE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-overlay_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Tree Overlay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kconfig_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kconfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-space_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-declaration-space_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-code_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    <span class="md-ellipsis">
+      template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-overlay_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Tree Overlay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kconfig_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kconfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-space_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-declaration-space_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-code_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Programming</h1>
+
+<h2 id="general-driver-model">General Driver Model</h2>
+<h3 id="notes">Notes</h3>
+<p>yowai more</p>
+<p>The application interacts with the hardware through the generic API by obtaining a device pointer for the hardware in question,
+using the macro DEVICE_DT_GET() or related macros.
+The Zephyr device model is responsible for the association between generic APIs and device driver implementations.</p>
+<p><img alt="devicetree model" src="../assets/devicetree_model.png" title="devicetree model" /></p>
+<p>use the macro <code>DEVICE_DT_GET()</code>
+o get the device pointer, you need to pass the devicetree node identifier.
+As mentioned in the Devicetree section, there are many ways to get the node identifier.
+Two common ways are by the node label through the macro DT_NODELABEL() and by an alias through the macro DT_ALIAS().</p>
+<p>Before using the device pointer, it should be checked using <code>device_is_ready()</code></p>
+<p>Most peripheral APIs will have an equivalent to DEVICE_DT_GET() and device_is_ready() that are specific to the peripheral. For example for the GPIO peripheral, there is GPIO_DT_SPEC_GET() and gpio_is_ready_dt().</p>
+<p>These are the recommended ways to use the peripheral as they collect more information about the peripheral from the devicetree structure and reduce the need to add peripheral configurations in the application code.</p>
+<hr />
+<h3 id="device-tree-overlay">Device Tree Overlay</h3>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Add your device tree overlay code here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="kconfig">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+</span></code></pre></div>
+<hr />
+<h3 id="includes">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Add your header includes here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="declaration-space">Declaration Space</h3>
+<p><div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEVICE_DT_GET</span><span class="p">(</span><span class="n">DT_NODELABEL</span><span class="p">(</span><span class="n">uart0</span><span class="p">));</span>
+</span></code></pre></div>
+To use a device driver generic API, you must have a pointer of type const struct device to point to its implementation. You need to do this per peripheral instance. For example, if you have two UART peripherals (&amp;uart0 and &amp;uart1) and you want to use them both, you must have two separate pointers of type const struct device.</p>
+<p>In other words, you need to have two different calls to <code>DEVICE_DT_GET()</code>.</p>
+<hr />
+<h3 id="function-declaration-space">Function Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Declare functions</span>
+</span></code></pre></div>
+<hr />
+<h3 id="inline-code">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">device_is_ready</span><span class="p">(</span><span class="n">dev</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h3 id="bottom">Bottom</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// additional code below Main function / threads</span>
+</span></code></pre></div>
+<hr />
+<h2 id="gpios">GPIOs</h2>
+<h3 id="notes_1">Notes</h3>
+<p>NSome of the generic APIs in Zephyr have API-specific structs that contain the previously mentioned device pointer, as well as some other information about the device.
+In the GPIO API, this is the structure <code>gpio_dt_spec</code>. This structure encompasses the device pointer const struct device
+<code>* port</code>, as well as the pin number on the device, <code>gpio_pin_t pin</code>, and the device’s configuration flags, <code>gpio_dt_flags_t dt_flags</code>.</p>
+<p>The port is the GPIO device controlling the pin. Pins are usually grouped and controlled by a single GPIO port. On most Nordic SoCs, there are either one or two GPIO controllers, named GPIO0 or GPIO1.</p>
+<p>Similar to <code>DEVICE_DT_GET()</code>, <code>GPIO_DT_SPEC_GET()</code> also takes the devicetree node identifier. It also takes the property name of the node.
+The function will return a variable of type <code>gpio_dt_spec</code>, containing the device pointer as well as the pin number and configuration flags.</p>
+<hr />
+<h3 id="device-tree-overlay_1">Device Tree Overlay</h3>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Add your device tree overlay code here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="kconfig_1">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>CONFIG_GPIO=y
+</span></code></pre></div>
+<hr />
+<h3 id="includes_1">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/kernel.h&gt;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/device.h&gt;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/devicetree.h&gt;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/drivers/gpio.h&gt;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="declaration-space_1">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">device</span><span class="w"> </span><span class="o">*</span><span class="n">gpio_dev</span><span class="p">;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">gpio_callback</span><span class="w"> </span><span class="n">button_cb_data</span><span class="p">;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="function-declaration-space_1">Function Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Declare functions</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">button_pressed</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">gpio_callback</span><span class="w"> </span><span class="o">*</span><span class="n">cb</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">pins</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="inline-code_1">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Inline code snippets</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">gpio_pin_configure</span><span class="p">(</span><span class="n">gpio_dev</span><span class="p">,</span><span class="w"> </span><span class="n">PIN</span><span class="p">,</span><span class="w"> </span><span class="n">GPIO_INPUT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_PULL_UP</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="bottom_1">Bottom</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// Main function or additional code</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="c1">// Initialize GPIO</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="ble">BLE</h2>
+<h3 id="notes_2">Notes</h3>
+<p><img alt="advertising" src="../assets/advertising.png" title="Advertising and Scanning Intervals" /></p>
+<hr />
+<h3 id="device-tree-overlay_2">Device Tree Overlay</h3>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// Add your device tree overlay code here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="kconfig_2">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+</span></code></pre></div>
+<hr />
+<h3 id="includes_2">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// Add your header includes here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="declaration-space_2">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+</span></code></pre></div>
+<hr />
+<h3 id="function-declaration-space_2">Function Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Declare functions</span>
+</span></code></pre></div>
+<hr />
+<h3 id="inline-code_2">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// Inline code snippets</span>
+</span></code></pre></div>
+<hr />
+<h3 id="bottom_2">Bottom</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// additional code below Main function / threads</span>
+</span></code></pre></div>
+<hr />
+<h2 id="template">template</h2>
+<h3 id="notes_3">Notes</h3>
+<ul>
+<li>Copy first, then edit!!!!!</li>
+</ul>
+<hr />
+<h3 id="device-tree-overlay_3">Device Tree Overlay</h3>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1">// Add your device tree overlay code here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="kconfig_3">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+</span></code></pre></div>
+<hr />
+<h3 id="includes_3">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">// Add your header includes here</span>
+</span></code></pre></div>
+<hr />
+<h3 id="declaration-space_3">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+</span></code></pre></div>
+<hr />
+<h3 id="function-declaration-space_3">Function Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// Declare functions</span>
+</span></code></pre></div>
+<hr />
+<h3 id="inline-code_3">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">// Inline code snippets</span>
+</span></code></pre></div>
+<hr />
+<h3 id="bottom_3">Bottom</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// additional code below Main function / threads</span>
+</span></code></pre></div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "toc.integrate", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
