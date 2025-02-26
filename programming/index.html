@@ -332,8 +332,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Device Tree Overlay">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#kconfig" class="md-nav__link">
@@ -341,11 +340,6 @@
       Kconfig
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -524,6 +518,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#includes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#declaration-space_2" class="md-nav__link">
     <span class="md-ellipsis">
       Declaration Space
@@ -593,7 +596,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes_2" class="md-nav__link">
+  <a href="#includes_3" class="md-nav__link">
     <span class="md-ellipsis">
       Includes
     </span>
@@ -614,93 +617,6 @@
   <a href="#inline-code_3" class="md-nav__link">
     <span class="md-ellipsis">
       Inline Code
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#template" class="md-nav__link">
-    <span class="md-ellipsis">
-      template
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="template">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notes_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#device-tree-overlay_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Device Tree Overlay
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kconfig_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kconfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#includes_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Includes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#declaration-space_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Declaration Space
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-declaration-space_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function Declaration Space
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inline-code_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inline Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bottom_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bottom
     </span>
   </a>
   
@@ -756,7 +672,7 @@ Two common ways are by the node label through the macro DT_NODELABEL() and by an
 <div class="language-dts highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Add your device tree overlay code here</span>
 </span></code></pre></div>
 <hr />
-<h4 id="kconfig">Kconfig</h4>
+<h3 id="kconfig">Kconfig</h3>
 <div class="language-kconfig highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
 </span></code></pre></div>
 <hr />
@@ -847,8 +763,13 @@ Types of Advertising:
 <hr />
 <h3 id="kconfig_2">Kconfig</h3>
 <p>prj.conf:</p>
-<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>CONFIG_BT=y
+<p><div class="language-kconfig highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>CONFIG_BT=y
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>CONFIG_BT_DEVICE_NAME=&quot;&lt;device_name&gt;&quot;
 </span></code></pre></div>
+The highlights of the default configuration are listed below:</p>
+<p>Broadcast support <code>(BT_BROADCASTER)</code> is enabled.
+The SoftDevice Controller is used <code>(BT_LL_CHOICE = BT_LL_SOFTDEVICE)</code>.
+The TX Power is set to 0 dBm <code>(BT_CTLR_TX_PWR = BT_CTLR_TX_PWR_0)</code></p>
 <p>Kconfig.sysbuild (if sysbuild is used):
 <div class="language-kconfig highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">source</span><span class="w"> </span><span class="s2">&quot;${ZEPHYR_BASE}/share/sysbuild/Kconfig&quot;</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
@@ -858,21 +779,47 @@ Types of Advertising:
 </span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">config</span><span class="w"> </span>NETCORE_IPC_RADIO_BT_HCI_IPC
 </span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span>y
 </span></code></pre></div></p>
-<hr />
-<h3 id="declaration-space_2">Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+<h3 id="includes_2">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/bluetooth/bluetooth.h&gt;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/bluetooth/gap.h&gt;</span>
 </span></code></pre></div>
 <hr />
+<h3 id="declaration-space_2">Declaration Space</h3>
+<p>Prepare the advertising packet</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">bt_data</span><span class="w"> </span><span class="n">ad</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="cm">/* Set the advertising flags */</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="n">BT_DATA_BYTES</span><span class="p">(</span><span class="n">BT_DATA_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="n">BT_LE_AD_NO_BREDR</span><span class="p">),</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="cm">/* Set the advertising packet data  */</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="n">BT_DATA</span><span class="p">(</span><span class="n">BT_DATA_NAME_COMPLETE</span><span class="p">,</span><span class="w"> </span><span class="n">DEVICE_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">DEVICE_NAME_LEN</span><span class="p">),</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>Prepare the scan response</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="cm">/* Declare the URL data to include in the scan response */</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">static</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">url_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="p">{</span><span class="mh">0x17</span><span class="p">,</span><span class="sc">&#39;/&#39;</span><span class="p">,</span><span class="sc">&#39;/&#39;</span><span class="p">,</span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="sc">&#39;x&#39;</span><span class="p">,</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;m&#39;</span><span class="p">,</span><span class="sc">&#39;p&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="sc">&#39;.&#39;</span><span class="p">,</span><span class="sc">&#39;c&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="sc">&#39;m&#39;</span><span class="p">};</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="cm">/* Declare the scan response packet */</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">bt_data</span><span class="w"> </span><span class="n">sd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="cm">/* include the URL data in the scan response packet*/</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="n">BT_DATA</span><span class="p">(</span><span class="n">BT_DATA_URI</span><span class="p">,</span><span class="w"> </span><span class="n">url_data</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">url_data</span><span class="p">)),</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="p">};</span>
+</span></code></pre></div>
+<p><img alt="url" src="../assets/url_scheme.png" title="URL Name String Mapping" /></p>
+<hr />
 <h3 id="function-declaration-space_2">Function Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Declare functions</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// Declare functions</span>
 </span></code></pre></div>
 <hr />
 <h3 id="inline-code_2">Inline Code</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// Inline code snippets</span>
-</span></code></pre></div>
+<p><code>bt_enable()</code> is blocking when passing NULL to it, and non-blocking if you pass a <code>bt_ready_cb_t</code> callback.
+<div class="language-c highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt_enable</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="n">LOG_ERR</span><span class="p">(</span><span class="s">&quot;Bluetooth init failed (err %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">}</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Bluetooth initialized</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span></code></pre></div></p>
 <hr />
 <h3 id="bottom_2">Bottom</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// additional code below Main function / threads</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">// additional code below Main function / threads</span>
 </span></code></pre></div>
 <hr />
 <h2 id="logging">Logging</h2>
@@ -916,66 +863,81 @@ Types of Advertising:
 </table>
 <hr />
 <h3 id="kconfig_3">Kconfig</h3>
-<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>CONFIG_LOG=y
-</span></code></pre></div>
-<hr />
-<h3 id="includes_2">Includes</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/logging/log.h&gt;</span>
-</span></code></pre></div>
-<hr />
-<h3 id="declaration-space_3">Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">LOG_MODULE_REGISTER</span><span class="p">(</span><span class="o">&lt;</span><span class="n">log_module_name</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_LEVEL_INF</span><span class="p">);</span>
-</span></code></pre></div>
-<hr />
-<h3 id="inline-code_3">Inline Code</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">exercise_num</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">                      </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x07</span><span class="p">,</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">                      </span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">};</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="c1">//Printf-like messages</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;nRF Connect SDK Fundamentals&quot;</span><span class="p">);</span>
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Exercise %d&quot;</span><span class="p">,</span><span class="n">exercise_num</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="n">LOG_DBG</span><span class="p">(</span><span class="s">&quot;A log message in debug level&quot;</span><span class="p">);</span>
-</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="n">LOG_WRN</span><span class="p">(</span><span class="s">&quot;A log message in warning level!&quot;</span><span class="p">);</span>
-</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="n">LOG_ERR</span><span class="p">(</span><span class="s">&quot;A log message in Error level!&quot;</span><span class="p">);</span>
-</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="c1">//Hexdump some data</span>
-</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">    </span><span class="n">LOG_HEXDUMP_INF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&quot;Sample Data!&quot;</span><span class="p">);</span>
-</span></code></pre></div>
-<hr />
-<h2 id="template">template</h2>
-<h3 id="notes_4">Notes</h3>
-<ul>
-<li>Copy first, then edit!!!!!</li>
-</ul>
-<hr />
-<h3 id="device-tree-overlay_3">Device Tree Overlay</h3>
-<div class="language-dts highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// Add your device tree overlay code here</span>
-</span></code></pre></div>
-<hr />
-<h3 id="kconfig_4">Kconfig</h3>
-<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>CONFIG_LOG=y
 </span></code></pre></div>
 <hr />
 <h3 id="includes_3">Includes</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Add your header includes here</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/logging/log.h&gt;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="declaration-space_4">Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+<h3 id="declaration-space_3">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">LOG_MODULE_REGISTER</span><span class="p">(</span><span class="o">&lt;</span><span class="n">log_module_name</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_LEVEL_INF</span><span class="p">);</span>
 </span></code></pre></div>
 <hr />
-<h3 id="function-declaration-space_3">Function Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">// Declare functions</span>
+<h3 id="inline-code_3">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">exercise_num</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">                      </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x07</span><span class="p">,</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">                      </span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">};</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="c1">//Printf-like messages</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;nRF Connect SDK Fundamentals&quot;</span><span class="p">);</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Exercise %d&quot;</span><span class="p">,</span><span class="n">exercise_num</span><span class="p">);</span><span class="w">    </span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">    </span><span class="n">LOG_DBG</span><span class="p">(</span><span class="s">&quot;A log message in debug level&quot;</span><span class="p">);</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="n">LOG_WRN</span><span class="p">(</span><span class="s">&quot;A log message in warning level!&quot;</span><span class="p">);</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="n">LOG_ERR</span><span class="p">(</span><span class="s">&quot;A log message in Error level!&quot;</span><span class="p">);</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="c1">//Hexdump some data</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w">    </span><span class="n">LOG_HEXDUMP_INF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&quot;Sample Data!&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 <hr />
-<h3 id="inline-code_4">Inline Code</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Inline code snippets</span>
+<!---
+## template
+
+### Notes
+- Copy first, then edit!!!!!
+
+---
+### Device Tree Overlay
+
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Add your device tree overlay code here</span>
 </span></code></pre></div>
-<hr />
-<h3 id="bottom_3">Bottom</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1">// additional code below Main function / threads</span>
+
+---
+### Kconfig
+
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
 </span></code></pre></div>
-<hr />
+
+---
+### Includes
+
+<div class="language-c highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">// Add your header includes here</span>
+</span></code></pre></div>
+
+---
+### Declaration Space
+
+<div class="language-c highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+</span></code></pre></div>
+
+---
+### Function Declaration Space
+
+<div class="language-c highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1">// Declare functions</span>
+</span></code></pre></div>
+
+---
+### Inline Code
+
+<div class="language-c highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1">// Inline code snippets</span>
+</span></code></pre></div>
+
+---
+### Bottom
+
+<div class="language-c highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1">// additional code below Main function / threads</span>
+</span></code></pre></div>
+
+--->
 
 
 
