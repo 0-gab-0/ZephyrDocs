@@ -332,7 +332,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Device Tree Overlay">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#kconfig" class="md-nav__link">
@@ -340,6 +341,11 @@
       Kconfig
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -518,15 +524,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Includes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#declaration-space_2" class="md-nav__link">
     <span class="md-ellipsis">
       Declaration Space
@@ -568,28 +565,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#template" class="md-nav__link">
+  <a href="#logging" class="md-nav__link">
     <span class="md-ellipsis">
-      template
+      Logging
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="template">
+    <nav class="md-nav" aria-label="Logging">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#notes_3" class="md-nav__link">
     <span class="md-ellipsis">
       Notes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#device-tree-overlay_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Device Tree Overlay
     </span>
   </a>
   
@@ -605,7 +593,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes_3" class="md-nav__link">
+  <a href="#includes_2" class="md-nav__link">
     <span class="md-ellipsis">
       Includes
     </span>
@@ -623,6 +611,75 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#inline-code_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inline Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    <span class="md-ellipsis">
+      template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-overlay_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Tree Overlay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kconfig_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kconfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Includes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-space_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaration Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-declaration-space_3" class="md-nav__link">
     <span class="md-ellipsis">
       Function Declaration Space
@@ -632,7 +689,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#inline-code_3" class="md-nav__link">
+  <a href="#inline-code_4" class="md-nav__link">
     <span class="md-ellipsis">
       Inline Code
     </span>
@@ -699,7 +756,7 @@ Two common ways are by the node label through the macro DT_NODELABEL() and by an
 <div class="language-dts highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Add your device tree overlay code here</span>
 </span></code></pre></div>
 <hr />
-<h3 id="kconfig">Kconfig</h3>
+<h4 id="kconfig">Kconfig</h4>
 <div class="language-kconfig highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
 </span></code></pre></div>
 <hr />
@@ -777,19 +834,30 @@ The function will return a variable of type <code>gpio_dt_spec</code>, containin
 <hr />
 <h2 id="ble">BLE</h2>
 <h3 id="notes_2">Notes</h3>
-<p><img alt="advertising" src="../assets/advertising.png" title="Advertising and Scanning Intervals" /></p>
+<p><img alt="advertising" src="../assets/advertising.png" title="Advertising and Scanning Intervals" />
+Types of Advertising:
+<code>ADV_IND</code> scannable and connectable
+<code>ADV_DIRECT_IND</code> connectable, directed
+<code>ADV_SCAN_IND</code> scannable (no connection)
+<code>ADV_NONCONN_IND</code> beacon</p>
 <hr />
 <h3 id="device-tree-overlay_2">Device Tree Overlay</h3>
 <div class="language-dts highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// Add your device tree overlay code here</span>
 </span></code></pre></div>
 <hr />
 <h3 id="kconfig_2">Kconfig</h3>
-<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+<p>prj.conf:</p>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>CONFIG_BT=y
 </span></code></pre></div>
-<hr />
-<h3 id="includes_2">Includes</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// Add your header includes here</span>
-</span></code></pre></div>
+<p>Kconfig.sysbuild (if sysbuild is used):
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">source</span><span class="w"> </span><span class="s2">&quot;${ZEPHYR_BASE}/share/sysbuild/Kconfig&quot;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">config</span><span class="w"> </span>NRF_DEFAULT_IPC_RADIO
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span>y
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">config</span><span class="w"> </span>NETCORE_IPC_RADIO_BT_HCI_IPC
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span>y
+</span></code></pre></div></p>
 <hr />
 <h3 id="declaration-space_2">Declaration Space</h3>
 <div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Declare variables, constants, etc.</span>
@@ -807,38 +875,105 @@ The function will return a variable of type <code>gpio_dt_spec</code>, containin
 <div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// additional code below Main function / threads</span>
 </span></code></pre></div>
 <hr />
-<h2 id="template">template</h2>
+<h2 id="logging">Logging</h2>
 <h3 id="notes_3">Notes</h3>
+<p>There are four severity levels available in the system, see the table below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Number</th>
+<th style="text-align: left;">Severity Level</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: left;">Macro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1 (most severe)</td>
+<td style="text-align: left;">Error</td>
+<td style="text-align: left;">Severe error conditions</td>
+<td style="text-align: left;">LOG_LEVEL_ERR</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Warning</td>
+<td style="text-align: left;">Conditions that should be taken care of</td>
+<td style="text-align: left;">LOG_LEVEL_WRN</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Info</td>
+<td style="text-align: left;">Informational messages that require no action</td>
+<td style="text-align: left;">LOG_LEVEL_INF</td>
+</tr>
+<tr>
+<td style="text-align: left;">4 (least severe)</td>
+<td style="text-align: left;">Debug</td>
+<td style="text-align: left;">Debugging messages</td>
+<td style="text-align: left;">LOG_LEVEL_DBG</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="kconfig_3">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>CONFIG_LOG=y
+</span></code></pre></div>
+<hr />
+<h3 id="includes_2">Includes</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/logging/log.h&gt;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="declaration-space_3">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">LOG_MODULE_REGISTER</span><span class="p">(</span><span class="o">&lt;</span><span class="n">log_module_name</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_LEVEL_INF</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="inline-code_3">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">exercise_num</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">                      </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x07</span><span class="p">,</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">                      </span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">};</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="c1">//Printf-like messages</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;nRF Connect SDK Fundamentals&quot;</span><span class="p">);</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Exercise %d&quot;</span><span class="p">,</span><span class="n">exercise_num</span><span class="p">);</span><span class="w">    </span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="n">LOG_DBG</span><span class="p">(</span><span class="s">&quot;A log message in debug level&quot;</span><span class="p">);</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="n">LOG_WRN</span><span class="p">(</span><span class="s">&quot;A log message in warning level!&quot;</span><span class="p">);</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="n">LOG_ERR</span><span class="p">(</span><span class="s">&quot;A log message in Error level!&quot;</span><span class="p">);</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="c1">//Hexdump some data</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">    </span><span class="n">LOG_HEXDUMP_INF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&quot;Sample Data!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h2 id="template">template</h2>
+<h3 id="notes_4">Notes</h3>
 <ul>
 <li>Copy first, then edit!!!!!</li>
 </ul>
 <hr />
 <h3 id="device-tree-overlay_3">Device Tree Overlay</h3>
-<div class="language-dts highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1">// Add your device tree overlay code here</span>
+<div class="language-dts highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// Add your device tree overlay code here</span>
 </span></code></pre></div>
 <hr />
-<h3 id="kconfig_3">Kconfig</h3>
-<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
+<h3 id="kconfig_4">Kconfig</h3>
+<div class="language-kconfig highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>//<span class="w"> </span>Add<span class="w"> </span>your<span class="w"> </span>prj.conf<span class="w"> </span>flags<span class="w"> </span>here
 </span></code></pre></div>
 <hr />
 <h3 id="includes_3">Includes</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">// Add your header includes here</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Add your header includes here</span>
 </span></code></pre></div>
 <hr />
-<h3 id="declaration-space_3">Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1">// Declare variables, constants, etc.</span>
+<h3 id="declaration-space_4">Declaration Space</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">// Declare variables, constants, etc.</span>
 </span></code></pre></div>
 <hr />
 <h3 id="function-declaration-space_3">Function Declaration Space</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// Declare functions</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">// Declare functions</span>
 </span></code></pre></div>
 <hr />
-<h3 id="inline-code_3">Inline Code</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">// Inline code snippets</span>
+<h3 id="inline-code_4">Inline Code</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Inline code snippets</span>
 </span></code></pre></div>
 <hr />
 <h3 id="bottom_3">Bottom</h3>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// additional code below Main function / threads</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1">// additional code below Main function / threads</span>
 </span></code></pre></div>
 <hr />
 
